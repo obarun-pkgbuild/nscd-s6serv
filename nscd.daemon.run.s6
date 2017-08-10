@@ -1,0 +1,15 @@
+#!/bin/bash
+exec 2>&1
+
+if [ ! -d /run/nscd ]; then
+	mkdir -p /run/nscd
+fi
+if [ ! -d /var/db/nscd ]; then
+	mkdir -p /var/db/nscd
+fi
+if [ ! -e /etc/netgroup ]; then
+	touch /etc/netgroup
+fi
+
+exec /usr/bin/nscd -d 
+

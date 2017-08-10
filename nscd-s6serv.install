@@ -1,0 +1,8 @@
+post_install() {
+	echo "	>> Create directory for log on /var/log/s6serv/nscd" 
+	mkdir -p -m 0755 /var/log/s6serv/nscd
+	chown -R s6log:log /var/log/s6serv/nscd 
+}
+post_upgrade(){
+	post_install
+}
